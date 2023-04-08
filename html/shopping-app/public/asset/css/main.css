@@ -1,0 +1,145 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+.text-color-org {
+    color: rgb(253, 165, 1);
+}
+
+.text-color-black {
+    color: rgb(0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+}
+
+.container {
+    max-width: 1024px;
+    margin: auto;
+    height: 100px;
+    /* background-color: bisque; */
+}
+
+.logo img{
+    width: 130px;
+}
+
+.container-nav {
+    max-width: 1024px;
+    width: 1024px;
+    display: flex;
+    margin: auto;
+    /* border: 1px solid red; */
+    padding: 15px;
+    
+}
+.container-nav .search {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+input[type=text] {
+    height: 30px;
+    width: 500px;
+}
+
+.btn {
+    
+    width: 60px;
+    height: 34px;
+}
+
+button {
+    width: 15%;
+    padding: 7px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0b7dda;
+  }
+
+
+.section-recommand {
+    width: 1055px;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+    background-color: rgb(255, 255, 255);
+}
+.on-sale {
+    display: inline;
+}
+
+.on-sale hr{
+    display: block;
+    margin-top: 6px;
+}
+
+.on-sale-title {
+    margin-left: 20px;
+    display: inline;
+    line-height: 45px
+}
+
+.shop-all {
+    float: right;
+    margin-right: 8px;
+    color: rgb(253, 165, 1);
+    border: 1.5px solid rgb(255, 149, 0);
+    padding: 10px;
+    border-radius: 4%;
+}
+
+
+.grid-container {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 200px 200px 200px 200px 200px 200px;
+    /* border: 1px solid red; */
+    padding: 10px;
+    /* background-color: white; */
+}
+
+.block-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    padding: 2px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 4%;
+}
+
+.block-item:hover {
+    box-shadow: 3px 2px #eaeaea;
+}
+
+.block-item p {
+    text-align: left;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.section-recommand h1 {
+    text-align: center;
+    padding: 15px;
+}

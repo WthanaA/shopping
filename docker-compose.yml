@@ -1,0 +1,75 @@
+version: '3'
+services:
+  mysql:
+    image: mysql/mysql-server:8.0
+    container_name: database
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+    - MYSQL_ROOT_PASSWORD=Wongst1112
+    # - MYSQL_DATABASE=sandbox
+    # - MYSQL_ROOT_HOST:%
+    ports:
+     - "3306:3306"
+    networks:
+      local:
+        ipv4_address: 172.10.0.2
+        aliases:
+          - mysql
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    links:
+      - "mysql:database"
+    environment:
+      - "PMA_HOST=database"
+    #   - "PMA_USER:root"
+    #   - "PMA_PASSWORD:root"
+    networks:
+      local:
+        ipv4_address: 172.10.0.3
+        aliases:
+          - phpmyadmin
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    #   - ./network_internal.conf:/etc/nginx/network_internal.conf
+    #   - ./cors.conf:/etc/nginx/vhost.d/default_location
+    networks:
+      local:
+        ipv4_address: 172.10.0.4
+        aliases:
+          - nginx
+  php:
+    image: php:1
+    container_name: php
+    build:
+      context: ./php
+      dockerfile: Dcokerfile
+    environment:
+      - VIRTUAL_HOST=shopping.local
+      - TZ=Asia/Bangkok
+    volumes:
+      - ./html/:/app
+    ports:
+      - "80"
+    networks:
+      local:
+        ipv4_address: 172.10.0.5
+        aliases:
+          - php
+
+networks:
+  local:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.10.0.0/24
